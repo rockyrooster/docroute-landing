@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DocRoute — Your docs know where they need to go</title>
+<meta property="og:title" content="DocRoute — AI-powered document routing for healthcare">
+<meta property="og:description" content="A product concept by Anup Lobo exploring intelligent document workflows in clinical environments.">
+<meta property="og:image" content="https://docroute-landing.vercel.app/og-image.png">
+<meta property="og:url" content="https://docroute-landing.vercel.app">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DocRoute — AI-powered document routing for healthcare">
+<meta name="twitter:description" content="A product concept by Anup Lobo exploring intelligent document workflows in clinical environments.">
+<meta name="twitter:image" content="https://docroute-landing.vercel.app/og-image.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&display=swap" rel="stylesheet">
 <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
 <style>
@@ -379,6 +389,10 @@
   .cta-section p { font-size:17px; color:var(--text-muted); margin-bottom:36px; }
 
   /* ── FOOTER ──────────────────────────────────────────── */
+  .byline          { text-align:center; padding:0 80px 0; margin-bottom:-40px; }
+  .byline p        { font-size:13px; color:var(--text-dim); line-height:1.6; }
+  .byline a        { color:var(--text-muted); text-decoration:underline; text-underline-offset:3px; text-decoration-color:var(--border-chip); }
+  .byline a:hover  { color:var(--text); }
   footer           { border-top:1px solid var(--divider); padding:48px 80px; display:flex; justify-content:space-between; align-items:center; }
   .footer-logo     { font-size:16px; font-weight:800; color:var(--text); }
   .footer-logo span{ color:var(--accent); }
@@ -618,7 +632,7 @@
     <span class="word-fade" style="animation-delay:0.82s">go.</span>
     <span class="word-up accent-word" style="animation-delay:1.10s">Now</span>
     <span class="word-up accent-word" style="animation-delay:1.22s">they</span>
-    <span class="word-up accent-word" style="animation-delay:1.34s">can</span>
+    <span class="word-up accent-word" style="animation-delay:1.34s">actually</span>
     <span class="word-up accent-word" style="animation-delay:1.46s">get</span>
     <span class="word-up accent-word" style="animation-delay:1.58s">there.</span>
   </h1>
@@ -717,10 +731,10 @@
       </svg>
 
       <div class="agent-chips">
-        <div class="agent-chip purple" style="--shimmer-delay:2.03s" data-tip="Click to see what this agent delivers">🤖 <span class="chip-label">Legal Review Agent</span></div>
-        <div class="agent-chip blue"   style="--shimmer-delay:2.38s" data-tip="Click to see what this agent delivers">📈 <span class="chip-label">Finance Analyst Agent</span></div>
-        <div class="agent-chip green"  style="--shimmer-delay:2.73s" data-tip="Click to see what this agent delivers">✅ <span class="chip-label">Action Extractor Agent</span></div>
-        <div class="agent-chip orange" style="--shimmer-delay:3.08s" data-tip="Click to see what this agent delivers">🎧 <span class="chip-label">Support Triage Agent</span></div>
+        <div class="agent-chip purple" style="--shimmer-delay:2.03s" data-tip="Click to see what this agent delivers">🩺 <span class="chip-label">Compliance Review Agent</span></div>
+        <div class="agent-chip blue"   style="--shimmer-delay:2.38s" data-tip="Click to see what this agent delivers">💊 <span class="chip-label">Claims Processing Agent</span></div>
+        <div class="agent-chip green"  style="--shimmer-delay:2.73s" data-tip="Click to see what this agent delivers">🏥 <span class="chip-label">Care Coordination Agent</span></div>
+        <div class="agent-chip orange" style="--shimmer-delay:3.08s" data-tip="Click to see what this agent delivers">🚨 <span class="chip-label">Patient Escalation Agent</span></div>
       </div>
 
     </div>
@@ -753,14 +767,14 @@
   <div class="logos-label anim-up">Works with your existing tools</div>
   <div class="logos-outer">
     <div class="logos-track">
-      <span class="logo-item">Notion</span><span class="logo-item">Google Drive</span><span class="logo-item">Slack</span><span class="logo-item">Salesforce</span><span class="logo-item">Dropbox</span><span class="logo-item">Confluence</span><span class="logo-item">HubSpot</span><span class="logo-item">GitHub</span><span class="logo-item">Jira</span><span class="logo-item">Airtable</span><span class="logo-item">Notion</span><span class="logo-item">Google Drive</span><span class="logo-item">Slack</span><span class="logo-item">Salesforce</span><span class="logo-item">Dropbox</span><span class="logo-item">Confluence</span><span class="logo-item">HubSpot</span><span class="logo-item">GitHub</span><span class="logo-item">Jira</span><span class="logo-item">Airtable</span><span class="logo-item">Notion</span><span class="logo-item">Google Drive</span><span class="logo-item">Slack</span><span class="logo-item">Salesforce</span><span class="logo-item">Dropbox</span><span class="logo-item">Confluence</span><span class="logo-item">HubSpot</span><span class="logo-item">GitHub</span><span class="logo-item">Jira</span><span class="logo-item">Airtable</span>
+      <span class="logo-item">Epic</span><span class="logo-item">Cerner</span><span class="logo-item">athenahealth</span><span class="logo-item">Google Drive</span><span class="logo-item">Slack</span><span class="logo-item">Salesforce</span><span class="logo-item">Dropbox</span><span class="logo-item">Confluence</span><span class="logo-item">Notion</span><span class="logo-item">Airtable</span><span class="logo-item">Epic</span><span class="logo-item">Cerner</span><span class="logo-item">athenahealth</span><span class="logo-item">Google Drive</span><span class="logo-item">Slack</span><span class="logo-item">Salesforce</span><span class="logo-item">Dropbox</span><span class="logo-item">Confluence</span><span class="logo-item">Notion</span><span class="logo-item">Airtable</span><span class="logo-item">Epic</span><span class="logo-item">Cerner</span><span class="logo-item">athenahealth</span><span class="logo-item">Google Drive</span><span class="logo-item">Slack</span><span class="logo-item">Salesforce</span><span class="logo-item">Dropbox</span><span class="logo-item">Confluence</span><span class="logo-item">Notion</span><span class="logo-item">Airtable</span>
     </div>
   </div>
 </div>
 
 <div class="section">
   <div class="section-label anim-up">How it works</div>
-  <div class="section-title anim-up" style="--anim-delay:0.08s">Three steps to smarter<br>document workflows</div>
+  <div class="section-title anim-up" style="--anim-delay:0.08s">Three steps to smarter<br>clinical workflows</div>
   <div class="section-sub   anim-up" style="--anim-delay:0.18s">No complex setup. Connect your sources, define what matters, and watch DocRoute handle the rest.</div>
   <div class="steps">
     <div class="step anim-left"  style="--anim-delay:0s">
@@ -786,34 +800,34 @@
     <!-- Row 1: 2 from right, 1 from left -->
     <div class="feature-card anim-right" style="--anim-delay:0s">
       <div class="feature-icon">🧠</div>
-      <h3>Goal-aware routing</h3>
-      <p>Not just file types — DocRoute understands intent and context to match docs with the best agent for the job.</p>
+      <h3>Clinical context, not just file types</h3>
+      <p>DocRoute reads ICD codes, payer info, patient identifiers, and care instructions — and routes based on what the document actually means.</p>
     </div>
     <div class="feature-card anim-right" style="--anim-delay:0.14s">
       <div class="feature-icon">🔌</div>
       <h3>Any doc, any source</h3>
-      <p>PDFs, spreadsheets, emails, Markdown, Slack threads. If it's text, DocRoute can route it.</p>
+      <p>Transfer auths, discharge summaries, prior auth requests, clinical notes. If it hits your EHR inbox, DocRoute can route it.</p>
     </div>
     <div class="feature-card anim-left"  style="--anim-delay:0.08s">
       <div class="feature-icon">⚙️</div>
       <h3>Build your own agents</h3>
-      <p>Bring your own agents or use built-in templates. Define what an agent does once, then let routing happen automatically.</p>
+      <p>Bring your own agents or use built-in templates. Define what a compliance, billing, or triage agent does once — then let routing handle the rest.</p>
     </div>
     <!-- Row 2: 2 from left, 1 from right -->
     <div class="feature-card anim-left"  style="--anim-delay:0s">
       <div class="feature-icon">🔁</div>
-      <h3>Multi-step workflows</h3>
-      <p>Docs can move through sequential agents — extract, review, summarize, notify — all in one automated pipeline.</p>
+      <h3>Multi-step care workflows</h3>
+      <p>A prior auth can trigger extraction, payer lookup, compliance check, and team notification — all without a single manual step.</p>
     </div>
     <div class="feature-card anim-left"  style="--anim-delay:0.14s">
       <div class="feature-icon">📊</div>
-      <h3>Audit & observability</h3>
-      <p>Every routing decision is logged with reasoning. See why a doc went where it did, and override anytime.</p>
+      <h3>Audit-ready by design</h3>
+      <p>Every routing decision is logged with reasoning. Built for HIPAA compliance audits — see exactly why a document moved where it did.</p>
     </div>
     <div class="feature-card anim-right" style="--anim-delay:0.08s">
       <div class="feature-icon">🔒</div>
-      <h3>Privacy by default</h3>
-      <p>Your documents never leave your infrastructure. On-prem and private cloud deployments available.</p>
+      <h3>HIPAA-compliant infrastructure</h3>
+      <p>Patient data never leaves your environment. SOC 2 ready, with on-prem and private cloud deployments available.</p>
     </div>
   </div>
 </div>
@@ -1032,6 +1046,10 @@
 
 </div>
 
+<div class="byline anim-up">
+  <p>DocRoute is a product concept by <a href="https://www.linkedin.com/in/anuplobo" target="_blank" rel="noopener">Anup Lobo</a>, exploring AI-driven document workflows in healthcare.</p>
+</div>
+
 <div class="cta-section">
   <h2 class="anim-up">Stop routing manually.<br>Start shipping faster.</h2>
   <p class="anim-up" style="--anim-delay:0.14s">Join teams saving hours every week by letting intelligent agents handle their document workflows.</p>
@@ -1040,7 +1058,7 @@
 
 <footer>
   <div class="footer-logo">doc<span>route</span></div>
-  <p>© 2025 DocRoute. Built for teams who ship.</p>
+  <p>© 2026 DocRoute. Built for teams who ship.</p>
 </footer>
 
 <script>
@@ -1157,25 +1175,25 @@
   (function() {
     /* Ordered pairing: doc chip label → agent chip label */
     const pair = {
-      '📄 Contract PDF':  '🤖 Legal Review Agent',
-      '📊 Revenue CSV':   '📈 Finance Analyst Agent',
-      '📝 Meeting Notes': '✅ Action Extractor Agent',
-      '📬 Support Email': '🎧 Support Triage Agent',
+      '📄 Transfer Auth':      '🩺 Compliance Review Agent',
+      '📊 Discharge Batch':    '💊 Claims Processing Agent',
+      '📝 Clinical Notes':     '🏥 Care Coordination Agent',
+      '📬 Prior Auth Request': '🚨 Patient Escalation Agent',
     };
     /* Reverse for agent → doc lookup */
     const pairRev = Object.fromEntries(Object.entries(pair).map(([d,a]) => [a, d]));
 
     const problems = {
-      '📄 Contract PDF':  { icon:'📄', text:'Contracts pile up in inboxes and legal queues — deals stall for days while teams chase approvals and route files by hand.' },
-      '📊 Revenue CSV':   { icon:'📊', text:'Finance teams spend hours mapping spreadsheets to templates, chasing analysts, and reconciling formula errors by hand.' },
-      '📝 Meeting Notes': { icon:'📝', text:'Action items buried in notes get lost in Slack — nobody owns follow-through and decisions disappear before the next call.' },
-      '📬 Support Email': { icon:'📬', text:'Support queues overflow with misdirected tickets. Manual triage sends the wrong issue to the wrong team, crushing SLA.' },
+      '📄 Transfer Auth':      { icon:'📄', text:'Transfer authorizations sit in fax queues for hours — missing ICD codes and unsigned forms delay care and expose facilities to compliance risk.' },
+      '📊 Discharge Batch':    { icon:'📊', text:'Discharge summaries arrive in bulk with inconsistent coding — billing teams chase corrections manually while claims age out and revenue leaks.' },
+      '📝 Clinical Notes':     { icon:'📝', text:'Critical care instructions buried in unstructured notes never reach the right team — handoff gaps lead to duplicated tests and missed follow-ups.' },
+      '📬 Prior Auth Request': { icon:'📬', text:'Prior auth requests land in generic inboxes and get routed by whoever picks up the phone — delays stretch days, denials pile up, patients wait.' },
     };
     const solutions = {
-      '🤖 Legal Review Agent':    { icon:'🤖', text:'Scans contracts in minutes, surfaces key clauses and risks, and drafts redlines — before any human reviewer opens the file.' },
-      '📈 Finance Analyst Agent': { icon:'📈', text:'Maps data, validates figures, and delivers insights automatically — your team sees trends and anomalies, not raw rows.' },
-      '✅ Action Extractor Agent':{ icon:'✅', text:'Pulls every action item, decision, and owner from notes and syncs them directly to your project management tool.' },
-      '🎧 Support Triage Agent':  { icon:'🎧', text:'Reads, categorizes, and routes each ticket to the right specialist instantly — with a suggested response already drafted.' },
+      '🩺 Compliance Review Agent': { icon:'🩺', text:'Reads every transfer auth the moment it arrives, flags missing codes and consent gaps, and routes to the right reviewer — before the patient moves.' },
+      '💊 Claims Processing Agent': { icon:'💊', text:'Parses each discharge record, validates ICD and CPT codes, and submits clean claims automatically — your team reviews exceptions, not every line.' },
+      '🏥 Care Coordination Agent': { icon:'🏥', text:'Extracts care instructions, follow-up orders, and responsible providers from unstructured notes and delivers them to the right team before the next shift.' },
+      '🚨 Patient Escalation Agent':{ icon:'🚨', text:'Reads prior auth requests, identifies the payer, checks coverage rules, and escalates time-sensitive cases instantly — no manual intake required.' },
     };
 
     const panel    = document.getElementById('chipPanel');
