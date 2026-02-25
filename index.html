@@ -376,7 +376,7 @@
   .step-num     { width:36px; height:36px; background:var(--step-num-bg); border:1px solid var(--step-num-border); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; color:var(--step-num-text); margin-bottom:20px; }
   .step h3, .feature-card h3 { font-size:18px; font-weight:700; margin-bottom:10px; }
   .step p, .feature-card p   { font-size:14px; color:var(--text-dim); line-height:1.6; }
-  .feature-icon { font-size:28px; margin-bottom:16px; }
+  .feature-icon { margin-bottom:16px; line-height:0; }
   .feature-card h3 { font-size:16px; }
 
   /* ── FEATURES ────────────────────────────────────────── */
@@ -389,6 +389,16 @@
   .cta-section p { font-size:17px; color:var(--text-muted); margin-bottom:36px; }
 
   /* ── FOOTER ──────────────────────────────────────────── */
+  /* ── PERSONAS ─────────────────────────────────────────── */
+  .personas-section   { padding:80px 80px 100px; text-align:center; }
+  .personas-grid      { display:grid; grid-template-columns:repeat(3,1fr); gap:40px; margin-top:60px; position:relative; }
+  .persona            { display:flex; flex-direction:column; align-items:center; gap:14px; }
+  .persona-avatar     { width:80px; height:80px; border-radius:50%; border:2px solid var(--accent); overflow:hidden; transition:box-shadow 0.3s ease; }
+  .persona-avatar:hover { box-shadow:0 0 0 4px rgba(212,103,42,0.15), 0 0 20px rgba(212,103,42,0.20); }
+  .persona-avatar img { width:100%; height:100%; object-fit:cover; display:block; }
+  .persona-role       { font-size:14px; font-weight:700; color:var(--text); letter-spacing:0.1px; }
+  .persona-quote      { font-size:13px; color:var(--text-muted); font-style:italic; line-height:1.7; max-width:220px; }
+
   .byline          { text-align:center; padding:0 80px 0; margin-bottom:-40px; }
   .byline p        { font-size:13px; color:var(--text-dim); line-height:1.6; }
   .byline a        { color:var(--text-muted); text-decoration:underline; text-underline-offset:3px; text-decoration-color:var(--border-chip); }
@@ -472,6 +482,7 @@
   .pcrd-screen {
     background:#07071a; border-bottom:1px solid rgba(255,255,255,0.06);
     padding:16px 18px 18px; font-family:'SF Mono','Fira Code',monospace;
+    height:280px; overflow:hidden;
   }
   .light .pcrd-screen { background: #1a1610; }
 
@@ -484,7 +495,8 @@
   /* File rows — card 1 */
   .pcrd-file-row { display:flex; align-items:center; gap:8px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.04); }
   .pcrd-file-row:last-of-type { border-bottom:none; }
-  .pcrd-file-icon { font-size:12px; flex-shrink:0; }
+  .pcrd-file-icon { flex-shrink:0; line-height:0; }
+  .chip-icon      { flex-shrink:0; line-height:0; }
   .pcrd-filename  { flex:1; font-size:11px; color:#5a5a82; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   .pcrd-badge     { font-size:10px; font-weight:600; padding:2px 7px; border-radius:4px; font-family:'Instrument Sans',sans-serif; white-space:nowrap; flex-shrink:0; }
   .pcrd-badge.done   { background:rgba(40,200,64,0.10); color:#28c840; border:1px solid rgba(40,200,64,0.18); }
@@ -654,10 +666,10 @@
     <div class="flow-row">
 
       <div class="doc-chips">
-        <div class="doc-chip" data-tip="Click to see how DocRoute solves this">📄 Transfer Auth</div>
-        <div class="doc-chip" data-tip="Click to see how DocRoute solves this">📊 Discharge Batch</div>
-        <div class="doc-chip" data-tip="Click to see how DocRoute solves this">📝 Clinical Notes</div>
-        <div class="doc-chip" data-tip="Click to see how DocRoute solves this">📬 Prior Auth Request</div>
+        <div class="doc-chip" data-label="Transfer Auth" data-tip="Click to see how DocRoute solves this"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6z"/><path d="M10 2v4h3"/><path d="M5.5 9.5l1.5 1.5 3-3"/></svg></span>Transfer Auth</div>
+        <div class="doc-chip" data-label="Discharge Batch" data-tip="Click to see how DocRoute solves this"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h8l2 2v6H2V6z"/><path d="M10 6v2h2"/><path d="M5 3h7l2 2v6" stroke-opacity="0.5"/></svg></span>Discharge Batch</div>
+        <div class="doc-chip" data-label="Clinical Notes" data-tip="Click to see how DocRoute solves this"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6z"/><path d="M10 2v4h3"/><line x1="5" y1="9" x2="11" y2="9"/><line x1="5" y1="11.5" x2="9" y2="11.5"/></svg></span>Clinical Notes</div>
+        <div class="doc-chip" data-label="Prior Auth Request" data-tip="Click to see how DocRoute solves this"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1.5" y="4" width="13" height="9" rx="1.5"/><path d="M1.5 6l6.5 4.5L14.5 6"/></svg></span>Prior Auth Request</div>
       </div>
 
       <!-- LEFT SVG: converging curves, chips → hub -->
@@ -731,10 +743,10 @@
       </svg>
 
       <div class="agent-chips">
-        <div class="agent-chip purple" style="--shimmer-delay:2.03s" data-tip="Click to see what this agent delivers">🩺 <span class="chip-label">Compliance Review Agent</span></div>
-        <div class="agent-chip blue"   style="--shimmer-delay:2.38s" data-tip="Click to see what this agent delivers">💊 <span class="chip-label">Claims Processing Agent</span></div>
-        <div class="agent-chip green"  style="--shimmer-delay:2.73s" data-tip="Click to see what this agent delivers">🏥 <span class="chip-label">Care Coordination Agent</span></div>
-        <div class="agent-chip orange" style="--shimmer-delay:3.08s" data-tip="Click to see what this agent delivers">🚨 <span class="chip-label">Patient Escalation Agent</span></div>
+        <div class="agent-chip purple" data-label="Compliance Review Agent" style="--shimmer-delay:2.03s" data-tip="Click to see what this agent delivers"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 2h2v4h4v2h-4v4H7v-4H3V6h4z"/></svg></span><span class="chip-label">Compliance Review Agent</span></div>
+        <div class="agent-chip blue"   data-label="Claims Processing Agent"  style="--shimmer-delay:2.38s" data-tip="Click to see what this agent delivers"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6z"/><path d="M9 2v4h4"/><line x1="6" y1="12" x2="6" y2="9.5"/><line x1="8.5" y1="12" x2="8.5" y2="8.5"/><line x1="11" y1="12" x2="11" y2="10.5"/></svg></span><span class="chip-label">Claims Processing Agent</span></div>
+        <div class="agent-chip green"  data-label="Care Coordination Agent"  style="--shimmer-delay:2.73s" data-tip="Click to see what this agent delivers"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="4.5" r="2"/><path d="M1 14c0-2.5 1.5-4 4-4s4 1.5 4 4"/><circle cx="11" cy="4.5" r="2"/><path d="M8 14c0-2.5 1.5-4 3-4s4 1.5 4 4"/></svg></span><span class="chip-label">Care Coordination Agent</span></div>
+        <div class="agent-chip orange" data-label="Patient Escalation Agent" style="--shimmer-delay:3.08s" data-tip="Click to see what this agent delivers"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6.5"/><path d="M8 11V5"/><path d="M5.5 7.5L8 5l2.5 2.5"/></svg></span><span class="chip-label">Patient Escalation Agent</span></div>
       </div>
 
     </div>
@@ -780,17 +792,17 @@
     <div class="step anim-left"  style="--anim-delay:0s">
       <div class="step-num">01</div>
       <h3>Connect your doc sources</h3>
-      <p>Link Google Drive, Notion, email, or any file storage. DocRoute continuously monitors for new and updated documents.</p>
+      <p>Connect your EHR, clinical drives, email, or any document source. DocRoute monitors for new patient transfers, discharge summaries, and care documents in real time.</p>
     </div>
     <div class="step anim-left"  style="--anim-delay:0.14s">
       <div class="step-num">02</div>
       <h3>Define goals & workflows</h3>
-      <p>Tell DocRoute what matters — extract action items, review contracts, triage support tickets — in plain language.</p>
+      <p>Define what matters — flag prior auth requests, route compliance docs, escalate nurse reports — in plain language. No engineering required.</p>
     </div>
     <div class="step anim-right" style="--anim-delay:0.08s">
       <div class="step-num">03</div>
       <h3>Agents handle the work</h3>
-      <p>The right specialist agent is assigned automatically based on doc type, content, and your defined workflow goals.</p>
+      <p>The right specialist agent is assigned based on document type, clinical context, and your team's workflow rules — automatically, every time.</p>
     </div>
   </div>
 </div>
@@ -799,36 +811,69 @@
   <div class="features-grid">
     <!-- Row 1: 2 from right, 1 from left -->
     <div class="feature-card anim-right" style="--anim-delay:0s">
-      <div class="feature-icon">🧠</div>
+      <div class="feature-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#d4672a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 4H8a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V11z"/><path d="M19 4v7h7"/><path d="M8 19h3l2.5-5 3 9 2-5.5 1.5 1.5H24"/></svg></div>
       <h3>Clinical context, not just file types</h3>
       <p>DocRoute reads ICD codes, payer info, patient identifiers, and care instructions — and routes based on what the document actually means.</p>
     </div>
     <div class="feature-card anim-right" style="--anim-delay:0.14s">
-      <div class="feature-icon">🔌</div>
+      <div class="feature-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#d4672a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10l3 3v13H5V10z"/><path d="M15 10v3h3"/><path d="M13 5h10l4 4v13H13V5z"/><path d="M23 5v4h4"/></svg></div>
       <h3>Any doc, any source</h3>
       <p>Transfer auths, discharge summaries, prior auth requests, clinical notes. If it hits your EHR inbox, DocRoute can route it.</p>
     </div>
     <div class="feature-card anim-left"  style="--anim-delay:0.08s">
-      <div class="feature-icon">⚙️</div>
+      <div class="feature-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#d4672a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13" cy="17" r="3.5"/><path d="M13 9.5v3M13 21.5v3M5.5 17H8.5M17.5 17H20.5M8.2 12.2l2.1 2.1M15.8 19.8l2.1 2.1M8.2 21.8l2.1-2.1M15.8 14.2l2.1-2.1"/><path d="M20 11l4.5-4.5" stroke-dasharray="2 1.5"/><circle cx="26" cy="5.5" r="2.5"/><circle cx="26" cy="5.5" r="1" fill="#d4672a" stroke="none"/></svg></div>
       <h3>Build your own agents</h3>
       <p>Bring your own agents or use built-in templates. Define what a compliance, billing, or triage agent does once — then let routing handle the rest.</p>
     </div>
     <!-- Row 2: 2 from left, 1 from right -->
     <div class="feature-card anim-left"  style="--anim-delay:0s">
-      <div class="feature-icon">🔁</div>
+      <div class="feature-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#d4672a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="10" r="2.5"/><path d="M7.5 10h9"/><circle cx="16" cy="10" r="2.5"/><path d="M16 12.5v9"/><circle cx="16" cy="22" r="2.5"/><path d="M18.5 22h9"/><circle cx="28" cy="22" r="2.5"/></svg></div>
       <h3>Multi-step care workflows</h3>
       <p>A prior auth can trigger extraction, payer lookup, compliance check, and team notification — all without a single manual step.</p>
     </div>
     <div class="feature-card anim-left"  style="--anim-delay:0.14s">
-      <div class="feature-icon">📊</div>
+      <div class="feature-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#d4672a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="17" height="22" rx="2"/><path d="M7 10l2 2 4-4"/><line x1="7" y1="17" x2="17" y2="17"/><line x1="7" y1="21" x2="13" y2="21"/><circle cx="24" cy="24" r="5.5"/><line x1="28" y1="28" x2="31" y2="31"/></svg></div>
       <h3>Audit-ready by design</h3>
       <p>Every routing decision is logged with reasoning. Built for HIPAA compliance audits — see exactly why a document moved where it did.</p>
     </div>
     <div class="feature-card anim-right" style="--anim-delay:0.08s">
-      <div class="feature-icon">🔒</div>
+      <div class="feature-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#d4672a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3L4 8v8c0 7 7 12 12 12s12-5 12-12V8z"/><rect x="12" y="17" width="8" height="7" rx="1.5"/><path d="M13.5 17v-2a2.5 2.5 0 0 1 5 0v2"/><circle cx="16" cy="20.5" r="1" fill="#d4672a" stroke="none"/></svg></div>
       <h3>HIPAA-compliant infrastructure</h3>
       <p>Patient data never leaves your environment. SOC 2 ready, with on-prem and private cloud deployments available.</p>
     </div>
+  </div>
+</div>
+
+<!-- ── PERSONAS ─────────────────────────────────────────── -->
+<div class="personas-section">
+  <div class="section-label anim-up">Who It's For</div>
+  <div class="section-title anim-up" style="--anim-delay:0.08s">Built for the people<br>who keep care moving.</div>
+  <div class="personas-grid">
+
+    <div class="persona anim-up" style="--anim-delay:0s">
+      <div class="persona-avatar">
+        <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=200&h=200&fit=crop" alt="Colorful cell microscopy">
+      </div>
+      <div class="persona-role">Clinical Operations Lead</div>
+      <p class="persona-quote">"I need to know every transfer auth is moving before a patient does."</p>
+    </div>
+
+    <div class="persona anim-up" style="--anim-delay:0.14s">
+      <div class="persona-avatar">
+        <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=200&h=200&fit=crop" alt="DNA visualization">
+      </div>
+      <div class="persona-role">Health IT Director</div>
+      <p class="persona-quote">"Our stack generates 10,000 documents a day. Nothing routes itself."</p>
+    </div>
+
+    <div class="persona anim-up" style="--anim-delay:0.28s">
+      <div class="persona-avatar">
+        <img src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=200&h=200&fit=crop" alt="Molecular structure">
+      </div>
+      <div class="persona-role">Compliance Officer</div>
+      <p class="persona-quote">"If I can't audit why a document moved, I can't sign off on it."</p>
+    </div>
+
   </div>
 </div>
 
@@ -847,22 +892,22 @@
           <span class="pcrd-chrome-title">doc-queue.live</span>
         </div>
         <div class="pcrd-file-row">
-          <span class="pcrd-file-icon">📄</span>
+          <span class="pcrd-file-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#9a8e7c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6z"/><path d="M10 2v4h3"/><path d="M5.5 9.5l1.5 1.5 3-3"/></svg></span>
           <span class="pcrd-filename">Patient_Transfer_Auth_4821.pdf</span>
           <span class="pcrd-badge done">✓ Done</span>
         </div>
         <div class="pcrd-file-row">
-          <span class="pcrd-file-icon">📊</span>
+          <span class="pcrd-file-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#9a8e7c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h8l2 2v6H2V6z"/><path d="M10 6v2h2"/><path d="M5 3h7l2 2v6" stroke-opacity="0.5"/></svg></span>
           <span class="pcrd-filename">Discharge_Summary_Batch_11.csv</span>
           <span class="pcrd-badge active">⟳ Routing</span>
         </div>
         <div class="pcrd-file-row">
-          <span class="pcrd-file-icon">📝</span>
+          <span class="pcrd-file-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#9a8e7c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6z"/><path d="M10 2v4h3"/><line x1="5" y1="9" x2="11" y2="9"/><line x1="5" y1="11.5" x2="9" y2="11.5"/></svg></span>
           <span class="pcrd-filename">Clinical_Notes_Ward3.md</span>
           <span class="pcrd-badge active">⟳ Reading</span>
         </div>
         <div class="pcrd-file-row">
-          <span class="pcrd-file-icon">📬</span>
+          <span class="pcrd-file-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#9a8e7c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1.5" y="4" width="13" height="9" rx="1.5"/><path d="M1.5 6l6.5 4.5L14.5 6"/></svg></span>
           <span class="pcrd-filename">Prior_Auth_Request_082.txt</span>
           <span class="pcrd-badge queued">○ Queued</span>
         </div>
@@ -991,8 +1036,8 @@
       <div class="section-label">Setup</div>
       <h2 class="frow-title">Your entire stack,<br>connected in minutes</h2>
       <ul class="frow-bullets">
-        <li>One-click integrations with Google Drive, Notion, Gmail, Slack, Salesforce, and 40+ more</li>
-        <li>Define workflows once in plain English — no YAML, no code, no engineering time</li>
+        <li>One-click integrations with Epic, Cerner, Google Drive, Slack, and 40+ clinical and productivity tools</li>
+        <li>Define workflows once in plain English — no HL7 mapping, no YAML, no engineering time</li>
         <li>Go live in under 3 minutes. Your first document routes itself while you're still onboarding</li>
       </ul>
     </div>
@@ -1051,8 +1096,8 @@
 </div>
 
 <div class="cta-section">
-  <h2 class="anim-up">Stop routing manually.<br>Start shipping faster.</h2>
-  <p class="anim-up" style="--anim-delay:0.14s">Join teams saving hours every week by letting intelligent agents handle their document workflows.</p>
+  <h2 class="anim-up">Stop chasing documents.<br>Start moving patients forward.</h2>
+  <p class="anim-up" style="--anim-delay:0.14s">Join healthcare teams saving hours every week by letting intelligent agents handle their document workflows.</p>
   <a href="#" class="btn-primary anim-up" style="--anim-delay:0.28s; font-size:16px; padding:16px 36px;">Get early access — it's free</a>
 </div>
 
@@ -1175,25 +1220,25 @@
   (function() {
     /* Ordered pairing: doc chip label → agent chip label */
     const pair = {
-      '📄 Transfer Auth':      '🩺 Compliance Review Agent',
-      '📊 Discharge Batch':    '💊 Claims Processing Agent',
-      '📝 Clinical Notes':     '🏥 Care Coordination Agent',
-      '📬 Prior Auth Request': '🚨 Patient Escalation Agent',
+      'Transfer Auth':      'Compliance Review Agent',
+      'Discharge Batch':    'Claims Processing Agent',
+      'Clinical Notes':     'Care Coordination Agent',
+      'Prior Auth Request': 'Patient Escalation Agent',
     };
     /* Reverse for agent → doc lookup */
     const pairRev = Object.fromEntries(Object.entries(pair).map(([d,a]) => [a, d]));
 
     const problems = {
-      '📄 Transfer Auth':      { icon:'📄', text:'Transfer authorizations sit in fax queues for hours — missing ICD codes and unsigned forms delay care and expose facilities to compliance risk.' },
-      '📊 Discharge Batch':    { icon:'📊', text:'Discharge summaries arrive in bulk with inconsistent coding — billing teams chase corrections manually while claims age out and revenue leaks.' },
-      '📝 Clinical Notes':     { icon:'📝', text:'Critical care instructions buried in unstructured notes never reach the right team — handoff gaps lead to duplicated tests and missed follow-ups.' },
-      '📬 Prior Auth Request': { icon:'📬', text:'Prior auth requests land in generic inboxes and get routed by whoever picks up the phone — delays stretch days, denials pile up, patients wait.' },
+      'Transfer Auth':      { text:'Transfer authorizations sit in fax queues for hours — missing ICD codes and unsigned forms delay care and expose facilities to compliance risk.' },
+      'Discharge Batch':    { text:'Discharge summaries arrive in bulk with inconsistent coding — billing teams chase corrections manually while claims age out and revenue leaks.' },
+      'Clinical Notes':     { text:'Critical care instructions buried in unstructured notes never reach the right team — handoff gaps lead to duplicated tests and missed follow-ups.' },
+      'Prior Auth Request': { text:'Prior auth requests land in generic inboxes and get routed by whoever picks up the phone — delays stretch days, denials pile up, patients wait.' },
     };
     const solutions = {
-      '🩺 Compliance Review Agent': { icon:'🩺', text:'Reads every transfer auth the moment it arrives, flags missing codes and consent gaps, and routes to the right reviewer — before the patient moves.' },
-      '💊 Claims Processing Agent': { icon:'💊', text:'Parses each discharge record, validates ICD and CPT codes, and submits clean claims automatically — your team reviews exceptions, not every line.' },
-      '🏥 Care Coordination Agent': { icon:'🏥', text:'Extracts care instructions, follow-up orders, and responsible providers from unstructured notes and delivers them to the right team before the next shift.' },
-      '🚨 Patient Escalation Agent':{ icon:'🚨', text:'Reads prior auth requests, identifies the payer, checks coverage rules, and escalates time-sensitive cases instantly — no manual intake required.' },
+      'Compliance Review Agent': { text:'Reads every transfer auth the moment it arrives, flags missing codes and consent gaps, and routes to the right reviewer — before the patient moves.' },
+      'Claims Processing Agent': { text:'Parses each discharge record, validates ICD and CPT codes, and submits clean claims automatically — your team reviews exceptions, not every line.' },
+      'Care Coordination Agent': { text:'Extracts care instructions, follow-up orders, and responsible providers from unstructured notes and delivers them to the right team before the next shift.' },
+      'Patient Escalation Agent':{ text:'Reads prior auth requests, identifies the payer, checks coverage rules, and escalates time-sensitive cases instantly — no manual intake required.' },
     };
 
     const panel    = document.getElementById('chipPanel');
@@ -1215,9 +1260,7 @@
       const prob = problems[docLabel];
       const sol  = solutions[agentLabel];
       if (!prob || !sol) return;
-      probIcon.textContent = prob.icon;
       probText.textContent = prob.text;
-      solIcon.textContent  = sol.icon;
       solText.textContent  = sol.text;
       panel.classList.add('open');
     }
@@ -1230,12 +1273,12 @@
     /* Build a map from label → element for quick lookup */
     const docChipMap   = {};
     const agentChipMap = {};
-    document.querySelectorAll('.doc-chip').forEach(c   => { docChipMap[c.textContent.trim()]   = c; });
-    document.querySelectorAll('.agent-chip').forEach(c => { agentChipMap[c.textContent.trim()] = c; });
+    document.querySelectorAll('.doc-chip').forEach(c   => { docChipMap[c.dataset.label]   = c; });
+    document.querySelectorAll('.agent-chip').forEach(c => { agentChipMap[c.dataset.label] = c; });
 
     document.querySelectorAll('.doc-chip').forEach(chip => {
       chip.addEventListener('click', () => {
-        const docLabel   = chip.textContent.trim();
+        const docLabel   = chip.dataset.label;
         const agentLabel = pair[docLabel];
         if (!agentLabel) return;
         /* Toggle off if already active */
@@ -1251,7 +1294,7 @@
 
     document.querySelectorAll('.agent-chip').forEach(chip => {
       chip.addEventListener('click', () => {
-        const agentLabel = chip.textContent.trim();
+        const agentLabel = chip.dataset.label;
         const docLabel   = pairRev[agentLabel];
         if (!docLabel) return;
         if (chip.classList.contains('active')) { closePanel(); return; }
