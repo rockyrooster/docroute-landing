@@ -108,29 +108,15 @@
     border-bottom-color: color-mix(in srgb, var(--border) 60%, transparent);
   }
 
+  @keyframes logoBreath {
+    0%, 100% { text-shadow: none; }
+    50%      { text-shadow: 0 0 16px rgba(212,103,42,0.30); }
+  }
   .logo {
     font-size: 20px; font-weight: 800; color: var(--text); letter-spacing: -0.5px;
-    position: relative; overflow: hidden; display: inline-block; cursor: default;
+    display: inline-block; cursor: default;
   }
-  .logo span { color: var(--accent); }
-  .logo::after {
-    content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 55%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.32), transparent);
-    transform: translateX(-100%);
-    animation: logoIdle 7s ease-in-out infinite 3s;
-  }
-  .logo:hover::after { animation: logoHover 0.55s ease-out forwards; }
-  @keyframes logoIdle {
-    0%,100% { transform:translateX(-100%); opacity:0; }
-    3%  { opacity:1; }
-    22% { transform:translateX(260%); opacity:0; }
-    23%,99% { opacity:0; }
-  }
-  @keyframes logoHover {
-    from { transform:translateX(-100%); opacity:0; }
-    10%  { opacity:1; }
-    to   { transform:translateX(260%); opacity:0; }
-  }
+  .logo span { color: var(--accent); animation: logoBreath 5s ease-in-out infinite; }
 
   .nav-links { display: flex; gap: 32px; }
   .nav-links a {
@@ -145,12 +131,35 @@
   .nav-links a:hover::after { width: 100%; }
 
   .nav-right { display: flex; align-items: center; gap: 12px; }
+  @keyframes nav-sparkle {
+    0%        { background-position: 200% 0%; opacity: 0; }
+    6%        { opacity: 1; }
+    28%       { background-position: -20% 0%; opacity: 1; }
+    34%, 100% { background-position: -20% 0%; opacity: 0; }
+  }
   .nav-cta {
     background: var(--accent); color: #fff; padding: 10px 20px; border-radius: 8px;
     font-size: 14px; font-weight: 600; text-decoration: none;
     transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+    position: relative; overflow: hidden; isolation: isolate;
   }
-  .nav-cta:hover  { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(124,108,252,0.35); filter: brightness(1.1); }
+  .nav-cta::before {
+    content: '';
+    position: absolute; inset: 0; border-radius: 8px; pointer-events: none;
+    background: linear-gradient(105deg,
+      transparent 28%,
+      rgba(255,255,230,0.0) 40%,
+      rgba(255,255,240,0.18) 47%,
+      rgba(255,255,255,0.28) 50%,
+      rgba(255,255,240,0.18) 53%,
+      rgba(255,255,230,0.0) 60%,
+      transparent 72%
+    );
+    background-size: 280% 100%;
+    mix-blend-mode: screen;
+    animation: nav-sparkle 8s ease-in-out infinite;
+  }
+  .nav-cta:hover  { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(212,103,42,0.45); filter: brightness(1.08); }
   .nav-cta:active { transform: scale(0.96); filter: brightness(0.95); box-shadow: none; }
   .theme-toggle {
     background: transparent; border: 1px solid var(--border); color: var(--text-nav);
@@ -227,7 +236,7 @@
     font-size:15px; font-weight:600; text-decoration:none; display:inline-block;
     transition:transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
   }
-  .btn-primary:hover  { transform:translateY(-2px); box-shadow:0 10px 28px rgba(124,108,252,0.4); filter:brightness(1.1); }
+  .btn-primary:hover  { transform:translateY(-2px); box-shadow:0 8px 32px rgba(212,103,42,0.50), 0 2px 12px rgba(212,103,42,0.30); filter:brightness(1.08); }
   .btn-primary:active { transform:scale(0.96); box-shadow:none; filter:brightness(0.92); }
 
   .btn-secondary {
@@ -285,20 +294,21 @@
   }
   .chip-panel.open { max-height:220px; opacity:1; margin-top:24px; }
   .chip-panel-inner {
-    border-top:1px solid var(--divider); padding:20px 0 8px;
+    border-top:1px solid var(--divider); padding:24px 0 8px;
     display:grid; grid-template-columns:1fr 32px 1fr;
     align-items:start; position:relative; gap:0;
+    text-align:left;
   }
-  .cp-col:first-child { padding-right:18px; }
-  .cp-col:last-child  { padding-left:18px; }
-  .cp-tag { font-size:10px; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; margin-bottom:10px; display:flex; align-items:center; gap:6px; }
+  .cp-col:first-child { padding-right:24px; }
+  .cp-col:last-child  { padding-left:24px; }
+  .cp-tag { font-size:10px; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; margin-bottom:12px; display:flex; align-items:center; gap:6px; }
   .cp-tag-prob { color:#f87171; }
   .cp-tag-prob::before  { content:''; width:6px; height:6px; border-radius:50%; background:#f87171; flex-shrink:0; }
   .cp-tag-sol  { color:#4ade80; }
   .cp-tag-sol::before   { content:''; width:6px; height:6px; border-radius:50%; background:#4ade80; flex-shrink:0; }
-  .cp-body { display:flex; gap:10px; align-items:flex-start; }
-  .cp-icon { font-size:18px; flex-shrink:0; margin-top:1px; }
-  .cp-text { font-size:12.5px; color:var(--text-muted); line-height:1.68; }
+  .cp-body { display:block; }
+  .cp-icon { display:none; }
+  .cp-text { font-size:13.5px; color:var(--text-muted); line-height:1.78; }
   .cp-arrow { display:flex; align-items:center; justify-content:center; padding-top:20px; color:var(--accent); font-size:18px; opacity:0.5; }
   .chip-panel-close { position:absolute; top:18px; right:0; background:none; border:none; cursor:pointer; color:var(--text-dim); font-size:18px; line-height:1; padding:2px 5px; border-radius:4px; transition:color 0.2s, background 0.2s; }
   .chip-panel-close:hover { color:var(--text); background:var(--surface2); }
@@ -384,7 +394,33 @@
   .features-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
 
   /* ── CTA ─────────────────────────────────────────────── */
-  .cta-section   { margin:100px 80px 80px; background:linear-gradient(135deg,var(--cta-start) 0%,var(--cta-end) 100%); border:1px solid var(--cta-border); border-radius:24px; padding:72px; text-align:center; }
+  @property --streak-angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+  @keyframes cta-streak { to { --streak-angle: 360deg; } }
+
+  .cta-section   { margin:100px 80px 80px; background:linear-gradient(135deg,var(--cta-start) 0%,var(--cta-end) 100%); border:1px solid var(--cta-border); border-radius:24px; padding:72px; text-align:center; position:relative; }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 25px;
+    background: conic-gradient(
+      from var(--streak-angle),
+      transparent 0%,
+      transparent 32%,
+      rgba(180,88,28,0.25) 40%,
+      rgba(240,172,52,0.85) 50%,
+      rgba(180,88,28,0.25) 60%,
+      transparent 68%,
+      transparent 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    padding: 1px;
+    animation: cta-streak 5s linear infinite;
+    pointer-events: none;
+  }
   .cta-section h2{ font-size:44px; font-weight:800; letter-spacing:-1.5px; margin-bottom:16px; }
   .cta-section p { font-size:17px; color:var(--text-muted); margin-bottom:36px; }
 
@@ -399,7 +435,7 @@
   .persona-role       { font-size:14px; font-weight:700; color:var(--text); letter-spacing:0.1px; }
   .persona-quote      { font-size:13px; color:var(--text-muted); font-style:italic; line-height:1.7; max-width:220px; }
 
-  .byline          { text-align:center; padding:0 80px 0; margin-bottom:-40px; }
+  .byline          { text-align:center; padding:0 80px 0; margin-bottom:60px; }
   .byline p        { font-size:13px; color:var(--text-dim); line-height:1.6; }
   .byline a        { color:var(--text-muted); text-decoration:underline; text-underline-offset:3px; text-decoration-color:var(--border-chip); }
   .byline a:hover  { color:var(--text); }
@@ -482,7 +518,7 @@
   .pcrd-screen {
     background:#07071a; border-bottom:1px solid rgba(255,255,255,0.06);
     padding:16px 18px 18px; font-family:'SF Mono','Fira Code',monospace;
-    height:280px; overflow:hidden;
+    height:245px; overflow:hidden;
   }
   .light .pcrd-screen { background: #1a1610; }
 
@@ -599,9 +635,33 @@
     .hero-enter, .word-fade, .word-up { opacity: 1; }
     .anim-up, .anim-left, .anim-right { opacity: 1; transform: none; }
   }
+
+  /* ── AMBIENT SCROLL GLOW ─────────────────────────────── */
+  .amb {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    z-index: 9998;
+    opacity: 0;
+    transition: opacity 1.6s ease;
+  }
+  #amb-top   { background: radial-gradient(ellipse 60% 50% at 78% 8%,  rgba(212,82,28,0.20)  0%, transparent 70%); }
+  #amb-mid   { background: radial-gradient(ellipse 65% 60% at 10% 55%, rgba(32,108,135,0.14) 0%, transparent 72%); }
+  #amb-bot   { background: radial-gradient(ellipse 55% 48% at 52% 84%, rgba(168,110,28,0.12)  0%, transparent 70%); }
+  #amb-feat  { background: radial-gradient(ellipse 52% 44% at 92% 40%, rgba(210,138,42,0.13) 0%, transparent 68%); }
+  #amb-cards { background: radial-gradient(ellipse 50% 42% at 5%  36%, rgba(195,100,32,0.13) 0%, transparent 70%); }
+  .light .amb { opacity: 0 !important; }
 </style>
 </head>
 <body>
+
+<!-- ambient scroll glow layers -->
+<div id="amb-top"   class="amb"></div>
+<div id="amb-mid"   class="amb"></div>
+<div id="amb-bot"   class="amb"></div>
+<div id="amb-feat"  class="amb"></div>
+<div id="amb-cards" class="amb"></div>
 
 <nav>
   <div class="logo">doc<span>route</span></div>
@@ -666,10 +726,10 @@
     <div class="flow-row">
 
       <div class="doc-chips">
-        <div class="doc-chip" data-label="Transfer Auth" data-tip="Click to see how DocRoute solves this"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6z"/><path d="M10 2v4h3"/><path d="M5.5 9.5l1.5 1.5 3-3"/></svg></span>Transfer Auth</div>
-        <div class="doc-chip" data-label="Discharge Batch" data-tip="Click to see how DocRoute solves this"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h8l2 2v6H2V6z"/><path d="M10 6v2h2"/><path d="M5 3h7l2 2v6" stroke-opacity="0.5"/></svg></span>Discharge Batch</div>
-        <div class="doc-chip" data-label="Clinical Notes" data-tip="Click to see how DocRoute solves this"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6z"/><path d="M10 2v4h3"/><line x1="5" y1="9" x2="11" y2="9"/><line x1="5" y1="11.5" x2="9" y2="11.5"/></svg></span>Clinical Notes</div>
-        <div class="doc-chip" data-label="Prior Auth Request" data-tip="Click to see how DocRoute solves this"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1.5" y="4" width="13" height="9" rx="1.5"/><path d="M1.5 6l6.5 4.5L14.5 6"/></svg></span>Prior Auth Request</div>
+        <div class="doc-chip" data-label="Transfer Auth"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6z"/><path d="M10 2v4h3"/><path d="M5.5 9.5l1.5 1.5 3-3"/></svg></span>Transfer Auth</div>
+        <div class="doc-chip" data-label="Discharge Batch"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h8l2 2v6H2V6z"/><path d="M10 6v2h2"/><path d="M5 3h7l2 2v6" stroke-opacity="0.5"/></svg></span>Discharge Batch</div>
+        <div class="doc-chip" data-label="Clinical Notes"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6z"/><path d="M10 2v4h3"/><line x1="5" y1="9" x2="11" y2="9"/><line x1="5" y1="11.5" x2="9" y2="11.5"/></svg></span>Clinical Notes</div>
+        <div class="doc-chip" data-label="Prior Auth Request"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1.5" y="4" width="13" height="9" rx="1.5"/><path d="M1.5 6l6.5 4.5L14.5 6"/></svg></span>Prior Auth Request</div>
       </div>
 
       <!-- LEFT SVG: converging curves, chips → hub -->
@@ -704,7 +764,7 @@
       </svg>
 
       <div class="flow-vconnector"></div>
-      <div class="hub" data-tip="Routes based on content, intent and your workflow goals — not just file type">
+      <div class="hub">
         <div class="hub-icon">⚡</div>
         <div class="hub-label">DocRoute</div>
         <div class="hub-sub">Goal-aware routing</div>
@@ -724,29 +784,29 @@
         <path id="pr2" d="M 0,95 C 26,95 38,70  64,70"  stroke="#3a3028" stroke-width="1"/>
         <path id="pr3" d="M 0,95 C 26,95 38,120 64,120" stroke="#3a3028" stroke-width="1"/>
         <path id="pr4" d="M 0,95 C 26,95 38,170 64,170" stroke="#3a3028" stroke-width="1"/>
-        <circle r="2" fill="#d48050" filter="url(#gr)">
+        <circle r="2" fill="#4dd8b0" filter="url(#gr)">
           <animateMotion dur="1.8s" begin="0.5s"  repeatCount="indefinite"><mpath href="#pr1"/></animateMotion>
           <animate attributeName="opacity" dur="1.8s" begin="0.5s"  repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.1;0.85;1"/>
         </circle>
-        <circle r="2" fill="#d48050" filter="url(#gr)">
+        <circle r="2" fill="#4dd8b0" filter="url(#gr)">
           <animateMotion dur="1.8s" begin="0.85s" repeatCount="indefinite"><mpath href="#pr2"/></animateMotion>
           <animate attributeName="opacity" dur="1.8s" begin="0.85s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.1;0.85;1"/>
         </circle>
-        <circle r="2" fill="#d48050" filter="url(#gr)">
+        <circle r="2" fill="#4dd8b0" filter="url(#gr)">
           <animateMotion dur="1.8s" begin="1.2s"  repeatCount="indefinite"><mpath href="#pr3"/></animateMotion>
           <animate attributeName="opacity" dur="1.8s" begin="1.2s"  repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.1;0.85;1"/>
         </circle>
-        <circle r="2" fill="#d48050" filter="url(#gr)">
+        <circle r="2" fill="#4dd8b0" filter="url(#gr)">
           <animateMotion dur="1.8s" begin="1.55s" repeatCount="indefinite"><mpath href="#pr4"/></animateMotion>
           <animate attributeName="opacity" dur="1.8s" begin="1.55s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.1;0.85;1"/>
         </circle>
       </svg>
 
       <div class="agent-chips">
-        <div class="agent-chip purple" data-label="Compliance Review Agent" style="--shimmer-delay:2.03s" data-tip="Click to see what this agent delivers"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 2h2v4h4v2h-4v4H7v-4H3V6h4z"/></svg></span><span class="chip-label">Compliance Review Agent</span></div>
-        <div class="agent-chip blue"   data-label="Claims Processing Agent"  style="--shimmer-delay:2.38s" data-tip="Click to see what this agent delivers"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6z"/><path d="M9 2v4h4"/><line x1="6" y1="12" x2="6" y2="9.5"/><line x1="8.5" y1="12" x2="8.5" y2="8.5"/><line x1="11" y1="12" x2="11" y2="10.5"/></svg></span><span class="chip-label">Claims Processing Agent</span></div>
-        <div class="agent-chip green"  data-label="Care Coordination Agent"  style="--shimmer-delay:2.73s" data-tip="Click to see what this agent delivers"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="4.5" r="2"/><path d="M1 14c0-2.5 1.5-4 4-4s4 1.5 4 4"/><circle cx="11" cy="4.5" r="2"/><path d="M8 14c0-2.5 1.5-4 3-4s4 1.5 4 4"/></svg></span><span class="chip-label">Care Coordination Agent</span></div>
-        <div class="agent-chip orange" data-label="Patient Escalation Agent" style="--shimmer-delay:3.08s" data-tip="Click to see what this agent delivers"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6.5"/><path d="M8 11V5"/><path d="M5.5 7.5L8 5l2.5 2.5"/></svg></span><span class="chip-label">Patient Escalation Agent</span></div>
+        <div class="agent-chip purple" data-label="Compliance Review Agent" style="--shimmer-delay:2.03s"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 2h2v4h4v2h-4v4H7v-4H3V6h4z"/></svg></span><span class="chip-label">Compliance Review Agent</span></div>
+        <div class="agent-chip blue"   data-label="Claims Processing Agent"  style="--shimmer-delay:2.38s"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6z"/><path d="M9 2v4h4"/><line x1="6" y1="12" x2="6" y2="9.5"/><line x1="8.5" y1="12" x2="8.5" y2="8.5"/><line x1="11" y1="12" x2="11" y2="10.5"/></svg></span><span class="chip-label">Claims Processing Agent</span></div>
+        <div class="agent-chip green"  data-label="Care Coordination Agent"  style="--shimmer-delay:2.73s"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="4.5" r="2"/><path d="M1 14c0-2.5 1.5-4 4-4s4 1.5 4 4"/><circle cx="11" cy="4.5" r="2"/><path d="M8 14c0-2.5 1.5-4 3-4s4 1.5 4 4"/></svg></span><span class="chip-label">Care Coordination Agent</span></div>
+        <div class="agent-chip orange" data-label="Patient Escalation Agent" style="--shimmer-delay:3.08s"><span class="chip-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6.5"/><path d="M8 11V5"/><path d="M5.5 7.5L8 5l2.5 2.5"/></svg></span><span class="chip-label">Patient Escalation Agent</span></div>
       </div>
 
     </div>
@@ -1185,7 +1245,8 @@
 
       const trail = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       trail.setAttribute('d', path.getAttribute('d'));
-      trail.setAttribute('stroke', '#c87040');
+      const trailColor = (filterId === 'gr') ? '#30c0a0' : '#c87040';
+      trail.setAttribute('stroke', trailColor);
       trail.setAttribute('stroke-width', '1.5');
       trail.setAttribute('stroke-linecap', 'round');
       trail.setAttribute('stroke-dasharray', trailLen + ' ' + (len + 20));
@@ -1308,6 +1369,48 @@
     });
 
     closeBtn.addEventListener('click', closePanel);
+  })();
+
+  /* ── ambient scroll glow ─────────────────────────────── */
+  (function () {
+    const ambTop   = document.getElementById('amb-top');
+    const ambMid   = document.getElementById('amb-mid');
+    const ambBot   = document.getElementById('amb-bot');
+    const ambFeat  = document.getElementById('amb-feat');
+    const ambCards = document.getElementById('amb-cards');
+
+    function clamp(v, lo, hi) { return Math.min(hi, Math.max(lo, v)); }
+
+    function updateAmb() {
+      const p = clamp(window.scrollY / (document.documentElement.scrollHeight - window.innerHeight), 0, 1);
+
+      // Top: full at load, fades out between 22%–42% scroll
+      ambTop.style.opacity = p < 0.22 ? 1 : clamp(1 - (p - 0.22) / 0.20, 0, 1);
+
+      // Mid: fades in 30%–44%, full through 62%, fades out by 78%
+      ambMid.style.opacity = clamp(Math.min(
+        p < 0.30 ? 0 : (p - 0.30) / 0.14,
+        p < 0.62 ? 1 : 1 - (p - 0.62) / 0.16
+      ), 0, 1);
+
+      // Bot: fades in 64%–80%, stays through end
+      ambBot.style.opacity = p < 0.64 ? 0 : clamp((p - 0.64) / 0.16, 0, 1);
+
+      // Feat: dimmed right-side glow (intentionally asymmetric — 28% of full strength)
+      ambFeat.style.opacity = clamp(Math.min(
+        p < 0.16 ? 0 : (p - 0.16) / 0.12,
+        p < 0.50 ? 1 : 1 - (p - 0.50) / 0.14
+      ), 0, 1) * 0.28;
+
+      // Cards: warm amber left-side glow, lasts through personas section, fades out 60%–76%
+      ambCards.style.opacity = clamp(Math.min(
+        p < 0.14 ? 0 : (p - 0.14) / 0.12,
+        p < 0.60 ? 1 : 1 - (p - 0.60) / 0.16
+      ), 0, 1);
+    }
+
+    window.addEventListener('scroll', updateAmb, { passive: true });
+    updateAmb();
   })();
 </script>
 </body>
