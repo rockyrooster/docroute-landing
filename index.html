@@ -79,6 +79,7 @@
   .light .theme-toggle {
     background: #ffffff; border-color: #ccc4b4;
     box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    color: #3a2e1c;
   }
   .light .agent-chip.purple { background:rgba(160,96,48,0.06); border-color:rgba(160,96,48,0.20); color:#8a4820; }
   .light .agent-chip.blue   { background:rgba(40,88,180,0.06); border-color:rgba(40,88,180,0.18); color:#2858b8; }
@@ -421,6 +422,18 @@
     animation: cta-streak 5s linear infinite;
     pointer-events: none;
   }
+  .light .cta-section::before {
+    background: conic-gradient(
+      from var(--streak-angle),
+      transparent 0%,
+      transparent 32%,
+      rgba(140,60,10,0.45) 40%,
+      rgba(190,90,20,0.95) 50%,
+      rgba(140,60,10,0.45) 60%,
+      transparent 68%,
+      transparent 100%
+    );
+  }
   .cta-section h2{ font-size:44px; font-weight:800; letter-spacing:-1.5px; margin-bottom:16px; }
   .cta-section p { font-size:17px; color:var(--text-muted); margin-bottom:36px; }
 
@@ -453,7 +466,7 @@
     padding:18px; font-family:'SF Mono','Fira Code',monospace;
     box-shadow:0 20px 60px rgba(0,0,0,0.35);
   }
-  .light .frow-screen { background:#1e1912; }
+  .light .frow-screen { background:#1e1208; border-color:rgba(120,70,20,0.25); }
   .frow-chrome { display:flex; align-items:center; gap:5px; margin-bottom:18px; }
   .frow-chrome-title { font-size:10px; color:#6a5a44; margin-left:6px; }
   /* Source rows (row 1) */
@@ -520,7 +533,7 @@
     padding:16px 18px 18px; font-family:'SF Mono','Fira Code',monospace;
     height:245px; overflow:hidden;
   }
-  .light .pcrd-screen { background: #1a1610; }
+  .light .pcrd-screen { background: #1e1208; border-bottom-color:rgba(120,70,20,0.20); }
 
   /* Traffic-light chrome */
   .pcrd-chrome { display:flex; align-items:center; gap:5px; margin-bottom:16px; }
@@ -651,7 +664,12 @@
   #amb-bot   { background: radial-gradient(ellipse 55% 48% at 52% 84%, rgba(168,110,28,0.12)  0%, transparent 70%); }
   #amb-feat  { background: radial-gradient(ellipse 52% 44% at 92% 40%, rgba(210,138,42,0.13) 0%, transparent 68%); }
   #amb-cards { background: radial-gradient(ellipse 50% 42% at 5%  36%, rgba(195,100,32,0.13) 0%, transparent 70%); }
-  .light .amb { opacity: 0 !important; }
+  .light .amb { mix-blend-mode: multiply; }
+  .light #amb-top   { background: radial-gradient(ellipse 60% 50% at 78% 8%,  rgba(210,140,60,0.22) 0%, transparent 70%); }
+  .light #amb-mid   { background: radial-gradient(ellipse 65% 60% at 10% 55%, rgba(60,140,170,0.08) 0%, transparent 72%); }
+  .light #amb-bot   { background: radial-gradient(ellipse 55% 48% at 52% 84%, rgba(180,120,40,0.18)  0%, transparent 70%); }
+  .light #amb-feat  { background: radial-gradient(ellipse 52% 44% at 92% 40%, rgba(210,140,50,0.16) 0%, transparent 68%); }
+  .light #amb-cards { background: radial-gradient(ellipse 50% 42% at 5%  36%, rgba(195,110,40,0.16) 0%, transparent 70%); }
 </style>
 </head>
 <body>
